@@ -4,7 +4,11 @@
   "license": "MIT",
   "scripts": {
     "dev": "nodemon --exec babel-node ./src/index.js",
-    "build": "babel src -d build"
+    "debug": "NODE_ENV=debug nodemon --exec babel-node --inspect ./src/index.js",
+    "build": "babel src -d build",
+    "clean": "rimraf build",
+    "start": "node build/index.js",
+    "start:prod": "yarn run clean && yarn build && NODE_ENV=production yarn start"
   },
   "dependencies": {
     "express": "^4.15.3"
@@ -15,6 +19,7 @@
     "babel-preset-es2017": "^6.24.1",
     "babel-preset-es2017-node7": "^0.5.2",
     "babel-preset-stage-0": "^6.24.1",
-    "nodemon": "^1.11.0"
+    "nodemon": "^1.11.0",
+    "rimraf": "^2.6.1"
   }
 }
